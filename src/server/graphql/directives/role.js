@@ -1,6 +1,6 @@
-import { SchemaDirectiveVisitor } from 'apollo-server-express';
-import { defaultFieldResolver } from 'graphql';
-import { ensureAuthorized } from '../../helpers/auth';
+const { SchemaDirectiveVisitor } = require('graphql-tools');
+const { defaultFieldResolver } = require('graphql');
+const { ensureAuthorized } = require('../../helpers/auth');
 
 class RoleDirective extends SchemaDirectiveVisitor {
   visitObject(type) {
@@ -23,7 +23,7 @@ class RoleDirective extends SchemaDirectiveVisitor {
     Object.keys(fields).forEach(fieldName => {
       const field = fields[fieldName];
       const { resolve = defaultFieldResolver } = field;
-      field.resolve = async function(...args) {
+      field.resolve = async function (...args) {
         // Get the required Role from the field first, falling back
         // to the objectType if no Role is required by the field:
         const requiredRole = field._requiredAuthRole || objectType._requiredAuthRole;
@@ -42,4 +42,4 @@ class RoleDirective extends SchemaDirectiveVisitor {
   }
 }
 
-export default RoleDirective;
+module.exports = RoleDirective;

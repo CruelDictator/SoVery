@@ -1,8 +1,8 @@
-import AuthDirective from './auth';
-import GuestDirective from './guest';
-import RoleDirective from './role';
+const AuthDirective = require('./auth');
+const GuestDirective = require('./guest');
+const RoleDirective = require('./role');
 
-export default {
+module.exports = {
   auth: AuthDirective,
   guest: GuestDirective,
   hasRole: RoleDirective

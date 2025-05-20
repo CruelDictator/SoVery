@@ -1,6 +1,6 @@
-import { gql } from 'apollo-server-express';
+const { gql } = require('apollo-server-express');
 
-export default gql`
+module.exports = gql`
   directive @auth on FIELD_DEFINITION
   directive @hasRole(role: Role = [USER, ADMIN]) on OBJECT | FIELD_DEFINITION
   directive @guest on FIELD_DEFINITION

@@ -1,11 +1,11 @@
-import { AuthenticationError } from 'apollo-server-express';
-import { hash } from 'bcryptjs';
-import { User } from '../models/models';
+const { AuthenticationError } = require('apollo-server-express');
+const { hash } = require('bcryptjs');
+const { User } = require('../models/models');
 
 const loggedIn = req => req.session.userId;
 const Authorized = req => req.session.userRole;
 
-export const attemptLogIn = async (email, password) => {
+const attemptLogIn = async (email, password) => {
   let message = 'Incorrect email or password. Please try again.';
 
   const user = await User.findOne({ email });
@@ -20,7 +20,7 @@ export const attemptLogIn = async (email, password) => {
   return user;
 };
 
-export const LogOut = (req, res) =>
+const LogOut = (req, res) =>
   new Promise((resolve, reject) => {
     req.session.destroy(err => {
       if (err) reject(err);
@@ -31,7 +31,7 @@ export const LogOut = (req, res) =>
     });
   });
 
-export const verifyPasswordChange = async (req, password, newPassword) => {
+const verifyPasswordChange = async (req, password, newPassword) => {
   let message = 'Same password used. Please choose a new one.';
 
   const user = await User.findOne({ _id: loggedIn(req) });
@@ -50,7 +50,7 @@ export const verifyPasswordChange = async (req, password, newPassword) => {
   return newPassword;
 };
 
-export const verifyForgotPasswordChange = async (verifiedToken, newPassword) => {
+const verifyForgotPasswordChange = async (verifiedToken, newPassword) => {
   const message = 'Same password used. Please choose a new one.';
 
   const user = await User.findOne({ _id: verifiedToken.user });
@@ -66,20 +66,30 @@ export const verifyForgotPasswordChange = async (verifiedToken, newPassword) => 
   return newPassword;
 };
 
-export const ensureLoggedIn = req => {
+const ensureLoggedIn = req => {
   if (!loggedIn(req)) {
     throw new AuthenticationError('You must be logged in.');
   }
 };
 
-export const ensureLoggedOut = req => {
+const ensureLoggedOut = req => {
   if (loggedIn(req)) {
     throw new AuthenticationError('You are already logged in.');
   }
 };
 
-export const ensureAuthorized = (req, requiredRole) => {
+const ensureAuthorized = (req, requiredRole) => {
   if (Authorized(req) !== requiredRole) {
     throw new AuthenticationError('You are not Authorized.');
   }
+};
+
+module.exports = {
+  attemptLogIn,
+  LogOut,
+  verifyPasswordChange,
+  verifyForgotPasswordChange,
+  ensureLoggedIn,
+  ensureLoggedOut,
+  ensureAuthorized
 };

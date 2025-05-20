@@ -3,7 +3,8 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const htmlPlugin = new HtmlWebPackPlugin({
-  template: './public/index.html'
+  template: './public/index.html',
+  filename: 'index.html'
 });
 
 const outputDirectory = 'dist';
@@ -13,7 +14,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, outputDirectory),
     filename: 'bundle.js',
-    publicPath: '/'
+    publicPath: '/',
+    clean: true
   },
   module: {
     rules: [
@@ -21,16 +23,7 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-react'],
-            plugins: [
-              ['@babel/plugin-proposal-decorators', { legacy: true }],
-              '@babel/plugin-proposal-class-properties',
-              'graphql-tag',
-              ['import', { libraryName: 'antd', libraryDirectory: 'es', style: 'css' }]
-            ]
-          }
+          loader: 'babel-loader'
         }
       },
       {
@@ -40,14 +33,7 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              mimetype: 'image/png'
-            }
-          }
-        ]
+        type: 'asset/resource'
       },
       {
         test: /\.less$/,
@@ -59,19 +45,34 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
-              localIdentName: '[name]__[local]___[hash:base64:5]'
+              modules: {
+                localIdentName: '[name]__[local]___[hash:base64:5]'
+              }
             }
           },
           {
             loader: 'less-loader'
           }
         ]
+      },
+      {
+        test: /\.m?js/,
+        resolve: {
+          fullySpecified: false
+        }
       }
     ]
   },
   resolve: {
-    extensions: ['*', '.js', '.jsx']
+    extensions: ['.*', '.js', '.jsx', '.mjs', '.cjs'],
+    fallback: {
+      "path": require.resolve("path-browserify"),
+      "fs": false,
+      "crypto": false
+    },
+    alias: {
+      'graphql$': 'graphql/index.js'
+    }
   },
   devServer: {
     port: 3000,
@@ -79,7 +80,16 @@ module.exports = {
     historyApiFallback: true,
     proxy: {
       '/api': 'http://localhost:8080'
+    },
+    static: {
+      directory: path.join(__dirname, 'public')
     }
   },
-  plugins: [new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/), htmlPlugin]
+  plugins: [
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
+    htmlPlugin,
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
+    })
+  ]
 };

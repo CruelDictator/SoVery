@@ -1,12 +1,16 @@
-import bodyParser from 'body-parser';
-import morgan from 'morgan';
-import chalk from 'chalk';
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+
+let chalk;
+(async () => {
+  chalk = (await import('chalk')).default;
+})();
 
 const loggerConfig = app => {
   morgan.token('graphql-query', req => {
     const { query, variables, operationName } = req.body;
     const { origin, cookie } = req.headers;
-    if (query) {
+    if (query && chalk) {
       return [
         '\n\n',
         chalk.magenta.bold('-------GraphQL-------\n'),
@@ -31,4 +35,4 @@ const loggerConfig = app => {
   app.use(morgan(':graphql-query'));
 };
 
-export default loggerConfig;
+module.exports = loggerConfig;

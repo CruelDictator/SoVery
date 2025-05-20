@@ -1,5 +1,5 @@
-import Joi from 'joi';
-import JoiObjectId from 'joi-objectid';
+const Joi = require('joi');
+const JoiObjectId = require('joi-objectid');
 
 Joi.objectId = JoiObjectId(Joi);
 
@@ -26,53 +26,43 @@ const name = Joi.string()
 const password = Joi.string()
   .min(8)
   .max(50)
-  .regex(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
-  .options({
-    language: {
-      string: {
-        regex: {
-          base: 'must have at least one letter and one digit.'
-        }
-      }
-    }
-  })
+  .pattern(/^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/)
   .required()
-  .label('Password');
+  .label('Password')
+  .messages({
+    'string.pattern.base': 'Password must have at least one letter and one digit.'
+  });
 
 const token = Joi.string()
   .token()
   .length(32);
 
-export const findUser = Joi.object().keys({
-  id: Joi.objectId()
-});
-
-export const signUp = Joi.object().keys({
-  email,
-  username,
-  name,
-  password
-});
-
-export const LogIn = Joi.object().keys({
-  email,
-  password
-});
-
-export const ChangePassword = Joi.object().keys({
-  password,
-  newPassword: password
-});
-
-export const sendUserToken = Joi.object().keys({
-  email
-});
-
-export const verifyUser = Joi.object().keys({
-  token
-});
-
-export const ChangePasswordWithToken = Joi.object().keys({
-  token,
-  newPassword: password
-});
+module.exports = {
+  findUser: Joi.object().keys({
+    id: Joi.objectId()
+  }),
+  signUp: Joi.object().keys({
+    email,
+    username,
+    name,
+    password
+  }),
+  LogIn: Joi.object().keys({
+    email,
+    password
+  }),
+  ChangePassword: Joi.object().keys({
+    password,
+    newPassword: password
+  }),
+  sendUserToken: Joi.object().keys({
+    email
+  }),
+  verifyUser: Joi.object().keys({
+    token
+  }),
+  ChangePasswordWithToken: Joi.object().keys({
+    token,
+    newPassword: password
+  })
+};

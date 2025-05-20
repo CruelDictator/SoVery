@@ -5,35 +5,42 @@
   "main": "./index.js",
   "scripts": {
     "check-staged": "lint-staged",
-    "start": "node -r esm index.js",
-    "dev": "nodemon -r esm -r dotenv/config index.js dotenv_config_path=../../.env"
+    "start": "node index.js",
+    "dev": "nodemon -r dotenv/config index.js dotenv_config_path=../../.env",
+    "seed": "node seed.js"
   },
   "keywords": [],
   "author": "Igor Marracho Carriço Cesar",
   "license": "ISC",
   "dependencies": {
-    "apollo-server-express": "^2.6.3",
+    "@apollo/server": "^4.10.0",
+    "apollo-server-express": "^3.13.0",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "chalk": "^2.4.2",
-    "connect-mongo": "^3.0.0",
-    "esm": "^3.2.25",
-    "express": "^4.17.1",
-    "express-session": "^1.16.2",
-    "graphql": "^14.4.2",
-    "graphql-tag": "^2.10.1",
-    "helmet": "^3.18.0",
-    "joi": "^14.3.1",
-    "joi-objectid": "^2.0.0",
-    "lodash": "^4.17.11",
-    "moment": "^2.24.0",
-    "mongoose": "^5.6.0",
-    "morgan": "^1.9.1",
-    "nodemailer": "^6.2.1"
+    "body-parser": "^1.20.2",
+    "chalk": "^5.3.0",
+    "connect-mongo": "^5.1.0",
+    "express": "^4.18.2",
+    "express-session": "^1.18.0",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
+    "helmet": "^7.1.0",
+    "joi": "^17.12.1",
+    "joi-objectid": "^4.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.1",
+    "mongoose": "^8.1.1",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.9"
   },
   "devDependencies": {
-    "dotenv": "^8.0.0",
-    "nodemon": "^1.19.1",
-    "prettier": "^1.18.2"
+    "dotenv": "^16.4.1",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.5"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "overrides": {
+    "chalk": "4.1.2"
   }
 }

@@ -1,4 +1,91 @@
 {
-  "packages": ["src/*"],
-  "version": "independent"
+  "packages": [
+    "src/*"
+  ],
+  "version": "independent",
+  "npmClient": "npm",
+  "useWorkspaces": true,
+  "nx": {
+    "useNx": true,
+    "cacheableOperations": [
+      "build",
+      "test",
+      "lint",
+      "dev"
+    ],
+    "parallel": 3,
+    "cacheDirectory": ".nx-cache"
+  },
+  "command": {
+    "bootstrap": {
+      "npmClientArgs": [
+        "--no-package-lock"
+      ],
+      "ignore": [
+        "**/node_modules",
+        "**/bower_components"
+      ],
+      "ci": false,
+      "forceLocal": true
+    },
+    "publish": {
+      "conventionalCommits": true,
+      "yes": true,
+      "message": "chore(release): publish",
+      "allowBranch": [
+        "main",
+        "master"
+      ],
+      "preid": "alpha",
+      "changelogPreset": "angular",
+      "createRelease": "github",
+      "gitRemote": "origin",
+      "verifyAccess": true,
+      "verifyRegistry": true
+    },
+    "version": {
+      "conventionalCommits": true,
+      "message": "chore(release): version bump",
+      "allowBranch": [
+        "main",
+        "master"
+      ],
+      "preid": "alpha",
+      "changelogPreset": "angular",
+      "createRelease": "github",
+      "gitRemote": "origin",
+      "push": true,
+      "forceGitTag": true
+    },
+    "run": {
+      "stream": true,
+      "parallel": true,
+      "bail": false,
+      "useNx": true,
+      "npmClient": "npm",
+      "npmClientArgs": [
+        "--no-package-lock"
+      ],
+      "sort": true,
+      "profile": true
+    }
+  },
+  "ignoreChanges": [
+    "**/*.md",
+    "**/*.test.js",
+    "**/*.spec.js",
+    "**/__tests__/**",
+    "**/__mocks__/**",
+    "**/.gitignore",
+    "**/.npmignore",
+    "**/.prettierrc",
+    "**/.eslintrc",
+    "**/tsconfig.tsbuildinfo",
+    "**/.env*",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.cache/**",
+    "**/.next/**"
+  ]
 }

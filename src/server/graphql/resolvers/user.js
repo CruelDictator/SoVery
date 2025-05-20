@@ -1,12 +1,12 @@
-import Joi from 'joi';
-import { UserInputError, ApolloError } from 'apollo-server-express';
+const Joi = require('joi');
+const { UserInputError, ApolloError } = require('apollo-server-express');
 
-import { User } from '../../models/models';
-import validators from '../validators/validators';
-import * as Auth from '../../helpers/auth';
-import { verifyToken, sendEmailWithToken } from '../../helpers/token';
+const { User } = require('../../models/models');
+const validators = require('../validators/validators');
+const Auth = require('../../helpers/auth');
+const { verifyToken, sendEmailWithToken } = require('../../helpers/token');
 
-export default {
+module.exports = {
   Query: {
     // TODO: projection, pagination, sanitization
     users: (root, args, context, info) => User.find({}),

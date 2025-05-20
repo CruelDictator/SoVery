@@ -169,3 +169,101 @@
    - Check for broken links
    - Validate code examples
    - Review changelog entries
+
+## Path Management Rules
+
+### 1. Running npm commands
+When running npm commands, always use absolute paths from the workspace root. The workspace root is:
+```
+/Users/johnmigliorisi/Documents/CursorProjects/SoVery
+```
+
+#### Correct way to run npm commands:
+```bash
+# For server
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery/src/server && npm install
+
+# For client
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery/src/client && npm install
+
+# For root
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery && npm install
+```
+
+#### Incorrect ways (avoid these):
+```bash
+# Don't use relative paths without checking current directory
+cd src/server && npm install  # May fail if not in root
+npm install  # May install in wrong directory
+
+# Don't assume current directory
+cd ../server && npm install  # May fail if not in expected directory
+```
+
+### 2. Path Verification
+Before running npm commands:
+1. Always verify the current directory using `pwd`
+2. Use absolute paths when possible
+3. If using relative paths, ensure you're in the correct starting directory
+
+### 3. Workspace Structure
+The project follows a monorepo structure with Lerna:
+```
+/Users/johnmigliorisi/Documents/CursorProjects/SoVery/
+├── src/
+│   ├── client/     # Frontend React application
+│   └── server/     # Backend Node.js application
+├── package.json    # Root package.json for workspace
+└── lerna.json     # Lerna configuration
+```
+
+### 4. Common Commands
+For convenience, here are the most common commands with their correct paths:
+
+```bash
+# Install all dependencies (root + workspaces)
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery && npm install && lerna bootstrap
+
+# Run development servers
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery && npm run dev  # Runs both client and server
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery/src/client && npm run dev  # Client only
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery/src/server && npm run dev  # Server only
+
+# Run tests
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery && npm test  # All tests
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery/src/client && npm test  # Client tests
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery/src/server && npm test  # Server tests
+```
+
+### 5. Environment Variables
+When running commands that require environment variables, ensure they are set correctly:
+
+```bash
+# Server with environment variables
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery/src/server && \
+NODE_ENV=development \
+SESSION_NAME=sid \
+SESSION_SECRET=temp-secret \
+SESSION_MAX_AGE=86400000 \
+MONGO_DB_URI=mongodb://localhost:27017/react-node-boilerplate \
+PORT=8080 \
+npm run dev
+```
+
+## Other Rules
+
+### 1. Node.js Version
+The project uses Node.js 23.11.0. If you need to use a different version:
+1. Install nvm: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash`
+2. Install and use the required version: `nvm install 23.11.0 && nvm use 23.11.0`
+
+### 2. Git Operations
+Always run git commands from the workspace root:
+```bash
+cd /Users/johnmigliorisi/Documents/CursorProjects/SoVery && git <command>
+```
+
+### 3. Code Style
+- Use ESLint and Prettier for code formatting
+- Run `npm run lint` before committing
+- Follow the existing code style in each file

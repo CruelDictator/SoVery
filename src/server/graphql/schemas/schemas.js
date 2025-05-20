@@ -1,4 +1,4 @@
-import user from './user';
-import root from './root';
+const user = require('./user');
+const root = require('./root');
 
-export default [user, root];
+module.exports = [user, root];
