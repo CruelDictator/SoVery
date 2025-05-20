@@ -4,17 +4,22 @@
   ],
   "version": "independent",
   "npmClient": "npm",
-  "useWorkspaces": true,
   "nx": {
     "useNx": true,
     "cacheableOperations": [
       "build",
       "test",
       "lint",
-      "dev"
+      "dev",
+      "type-check"
     ],
     "parallel": 3,
-    "cacheDirectory": ".nx-cache"
+    "cacheDirectory": ".nx-cache",
+    "typescript": {
+      "enabled": true,
+      "incremental": true,
+      "buildCache": true
+    }
   },
   "command": {
     "bootstrap": {
@@ -74,18 +79,23 @@
     "**/*.md",
     "**/*.test.js",
     "**/*.spec.js",
+    "**/*.test.ts",
+    "**/*.spec.ts",
     "**/__tests__/**",
     "**/__mocks__/**",
     "**/.gitignore",
     "**/.npmignore",
     "**/.prettierrc",
     "**/.eslintrc",
+    "**/tsconfig.json",
+    "**/tsconfig.*.json",
     "**/tsconfig.tsbuildinfo",
     "**/.env*",
     "**/coverage/**",
     "**/dist/**",
     "**/build/**",
     "**/.cache/**",
-    "**/.next/**"
+    "**/.next/**",
+    "**/*.d.ts"
   ]
 }

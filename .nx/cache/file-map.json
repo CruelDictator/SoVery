@@ -1,0 +1,675 @@
+{
+  "version": "6.0",
+  "nxVersion": "16.10.0",
+  "deps": {
+    "@graphql-tools/utils": "^10.8.6",
+    "graphql-tools": "^4.0.8",
+    "@babel/eslint-parser": "^7.23.10",
+    "@nrwl/nx-cloud": "^19.1.0",
+    "@nrwl/workspace": "^19.8.4",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jest": "^27.6.3",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-standard": "^5.0.0",
+    "husky": "^9.1.7",
+    "lerna": "7.0.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5"
+  },
+  "pathMappings": {
+    "@react-node-boilerplate/*": [
+      "src/*"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".env.example",
+        "hash": "13583503202209584346"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "24186057059472238"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "9109342333327244981"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "4106586788369178360"
+      },
+      {
+        "file": ".husky/pre-commit",
+        "hash": "13469207043343598078"
+      },
+      {
+        "file": ".nx/cache/cloud/2505.11.1.hotfix3/index.js",
+        "hash": "11311796494849432482"
+      },
+      {
+        "file": ".nx/cache/cloud/2505.11.1.hotfix3/lib/daemon/process-run-end.js",
+        "hash": "12091699596242033091"
+      },
+      {
+        "file": ".nx/cache/cloud/2505.11.1.hotfix3/lib/heartbeat/heartbeat-process.js",
+        "hash": "9001746653642749149"
+      },
+      {
+        "file": ".nx/cache/cloud/2505.11.1.hotfix3/package.json",
+        "hash": "1144058227172633564"
+      },
+      {
+        "file": ".nx/cache/cloud/2505.11.1.hotfix3/static/login-end.html",
+        "hash": "7227742377832893506"
+      },
+      {
+        "file": ".nx/cache/cloud/2505.11.1.hotfix3/static/login-start.html",
+        "hash": "4217172551631503077"
+      },
+      {
+        "file": ".nx/cache/cloud/verify.lock",
+        "hash": "11934659155055178281"
+      },
+      {
+        "file": ".nx/cache/d/server-process.json",
+        "hash": "4659880707914610085"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "3753415649651730218"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "6619448806425861717"
+      },
+      {
+        "file": ".travis.yml",
+        "hash": "10617669143802710823"
+      },
+      {
+        "file": ".vscode/settings.json",
+        "hash": "13985373816293765768"
+      },
+      {
+        "file": "CURSOR_RULES.md",
+        "hash": "1633396279496775143"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "4176130589554202882"
+      },
+      {
+        "file": "LernaDependencyUpdatePlan.md",
+        "hash": "13214937190257673718"
+      },
+      {
+        "file": "README.md",
+        "hash": "919254819315800772"
+      },
+      {
+        "file": "lerna.json",
+        "hash": "6219717132988308643"
+      },
+      {
+        "file": "node_modules.backup.tar.gz",
+        "hash": "11687769773129553341"
+      },
+      {
+        "file": "nx.json",
+        "hash": "11085880537945493177"
+      },
+      {
+        "file": "package-lock.json.backup",
+        "hash": "3177233889802479325"
+      },
+      {
+        "file": "package.json",
+        "hash": "10594939316379014387"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "977198585909827296"
+      },
+      {
+        "file": ".nx/cache/parsed-lock-file.json",
+        "hash": "17155864984113408410"
+      },
+      {
+        "file": ".nx/cache/lockfile.hash",
+        "hash": "13475587125707621117"
+      },
+      {
+        "file": ".nx/cache/project-graph.json",
+        "hash": "17804166095687932744"
+      },
+      {
+        "file": ".nx/cache/file-map.json",
+        "hash": "16870743324244575369"
+      }
+    ],
+    "projectFileMap": {
+      "server": [
+        {
+          "file": "src/server/config/loggerConfig.js",
+          "hash": "6032129657047291386",
+          "deps": [
+            "npm:body-parser",
+            "npm:morgan",
+            [
+              "npm:chalk",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "src/server/graphql/directives/auth.js",
+          "hash": "354813418554717180",
+          "deps": [
+            "npm:graphql-tools",
+            "npm:graphql"
+          ]
+        },
+        {
+          "file": "src/server/graphql/directives/directives.js",
+          "hash": "17671831237035799470"
+        },
+        {
+          "file": "src/server/graphql/directives/guest.js",
+          "hash": "8393794619656746287",
+          "deps": [
+            "npm:graphql-tools",
+            "npm:graphql"
+          ]
+        },
+        {
+          "file": "src/server/graphql/directives/role.js",
+          "hash": "9030044081573452231",
+          "deps": [
+            "npm:graphql-tools",
+            "npm:graphql"
+          ]
+        },
+        {
+          "file": "src/server/graphql/resolvers/resolvers.js",
+          "hash": "8341431695883472923"
+        },
+        {
+          "file": "src/server/graphql/resolvers/user.js",
+          "hash": "4766091314365899623",
+          "deps": [
+            "npm:joi",
+            "npm:apollo-server-express"
+          ]
+        },
+        {
+          "file": "src/server/graphql/schemas/root.js",
+          "hash": "3224024761503225068",
+          "deps": [
+            "npm:apollo-server-express"
+          ]
+        },
+        {
+          "file": "src/server/graphql/schemas/schemas.js",
+          "hash": "5194792973150266637"
+        },
+        {
+          "file": "src/server/graphql/schemas/user.js",
+          "hash": "11678675133633986881",
+          "deps": [
+            "npm:apollo-server-express"
+          ]
+        },
+        {
+          "file": "src/server/graphql/validators/user.js",
+          "hash": "13064190337141312346",
+          "deps": [
+            "npm:joi",
+            "npm:joi-objectid"
+          ]
+        },
+        {
+          "file": "src/server/graphql/validators/validators.js",
+          "hash": "17530888137656272782"
+        },
+        {
+          "file": "src/server/helpers/auth.js",
+          "hash": "5905638372247658662",
+          "deps": [
+            "npm:apollo-server-express",
+            "npm:bcryptjs"
+          ]
+        },
+        {
+          "file": "src/server/helpers/token.js",
+          "hash": "558865267150068874",
+          "deps": [
+            "npm:apollo-server-express",
+            "npm:crypto"
+          ]
+        },
+        {
+          "file": "src/server/index.js",
+          "hash": "6519103607047727410",
+          "deps": [
+            "npm:express",
+            "npm:helmet",
+            "npm:mongoose",
+            "npm:express-session",
+            "npm:@apollo/server",
+            "npm:@apollo/server/express4",
+            "npm:body-parser",
+            "npm:connect-mongo"
+          ]
+        },
+        {
+          "file": "src/server/index.mjs",
+          "hash": "2708963047163314383",
+          "deps": [
+            "npm:express",
+            "npm:helmet",
+            "npm:mongoose",
+            "npm:express-session",
+            "npm:connect-mongo",
+            "npm:@apollo/server",
+            "npm:@apollo/server/express4",
+            "npm:body-parser"
+          ]
+        },
+        {
+          "file": "src/server/models/models.js",
+          "hash": "9777039255890497191"
+        },
+        {
+          "file": "src/server/models/token.js",
+          "hash": "11368987275893550317",
+          "deps": [
+            "npm:mongoose"
+          ]
+        },
+        {
+          "file": "src/server/models/user.js",
+          "hash": "1852651004915598077",
+          "deps": [
+            "npm:mongoose",
+            "npm:bcryptjs"
+          ]
+        },
+        {
+          "file": "src/server/package.json",
+          "hash": "15542670057812277587"
+        },
+        {
+          "file": "src/server/seed.js",
+          "hash": "14930445124006593429",
+          "deps": [
+            "npm:mongoose",
+            "npm:bcryptjs"
+          ]
+        },
+        {
+          "file": "src/server/seed.mjs",
+          "hash": "15572763218591146831",
+          "deps": [
+            "npm:mongoose",
+            "npm:bcryptjs"
+          ]
+        },
+        {
+          "file": "src/server/test-auth.cjs",
+          "hash": "16892412316032934367",
+          "deps": [
+            "npm:mongoose",
+            "npm:bcryptjs"
+          ]
+        },
+        {
+          "file": "src/server/utils/sendEmail.js",
+          "hash": "10790438434121996819",
+          "deps": [
+            "npm:nodemailer"
+          ]
+        },
+        {
+          "file": "src/server/verify-user.cjs",
+          "hash": "8953450251849195015",
+          "deps": [
+            "npm:mongoose"
+          ]
+        }
+      ],
+      "client": [
+        {
+          "file": "src/client/.babelrc",
+          "hash": "9757120897304279506"
+        },
+        {
+          "file": "src/client/App.js",
+          "hash": "9436903965726191784",
+          "deps": [
+            "npm:react",
+            "npm:prop-types",
+            "npm:connected-react-router",
+            "npm:react-router-dom"
+          ]
+        },
+        {
+          "file": "src/client/components/CheckIfLoggedIn/CheckIfLoggedIn.js",
+          "hash": "13886575520679935661",
+          "deps": [
+            "npm:react",
+            "npm:prop-types",
+            "npm:antd",
+            "npm:@apollo/react-hooks",
+            "npm:react-redux",
+            "npm:redux"
+          ]
+        },
+        {
+          "file": "src/client/components/EmailSent/EmailSent.js",
+          "hash": "9010235307262161423",
+          "deps": [
+            "npm:react",
+            "npm:prop-types",
+            "npm:antd"
+          ]
+        },
+        {
+          "file": "src/client/components/EmailSent/EmailSent.less",
+          "hash": "16075262136519317060"
+        },
+        {
+          "file": "src/client/components/FormInputField/FormInputField.js",
+          "hash": "17844131619853860125",
+          "deps": [
+            "npm:react",
+            "npm:antd"
+          ]
+        },
+        {
+          "file": "src/client/components/GuestRoute/GuestRoute.js",
+          "hash": "17467991253917585441",
+          "deps": [
+            "npm:react",
+            "npm:prop-types",
+            "npm:react-router-dom",
+            "npm:react-redux"
+          ]
+        },
+        {
+          "file": "src/client/components/Layouts/GuestLayout.js",
+          "hash": "7281170221426242679",
+          "deps": [
+            "npm:react",
+            "npm:antd",
+            "npm:react-router-dom",
+            "npm:react-router"
+          ]
+        },
+        {
+          "file": "src/client/components/Layouts/Layouts.less",
+          "hash": "18115229315933941209"
+        },
+        {
+          "file": "src/client/components/Layouts/LoggedLayout.js",
+          "hash": "1591336711406059345",
+          "deps": [
+            "npm:react",
+            "npm:prop-types",
+            "npm:antd",
+            "npm:react-router-dom",
+            "npm:@apollo/react-hooks",
+            "npm:react-redux",
+            "npm:redux",
+            "npm:react-router"
+          ]
+        },
+        {
+          "file": "src/client/components/LoginForm/LoginForm.js",
+          "hash": "14026401015426197040",
+          "deps": [
+            "npm:react",
+            "npm:prop-types",
+            "npm:@apollo/react-hooks",
+            "npm:react-redux",
+            "npm:redux",
+            "npm:react-router-dom",
+            "npm:formik",
+            "npm:antd"
+          ]
+        },
+        {
+          "file": "src/client/components/LoginForm/LoginForm.less",
+          "hash": "6458271594975174676"
+        },
+        {
+          "file": "src/client/components/PrivateRoute/PrivateRoute.js",
+          "hash": "18283337774252292530",
+          "deps": [
+            "npm:react",
+            "npm:prop-types",
+            "npm:react-router-dom",
+            "npm:react-redux"
+          ]
+        },
+        {
+          "file": "src/client/components/RegisterForm/RegisterForm.js",
+          "hash": "11012426716360986557",
+          "deps": [
+            "npm:react",
+            "npm:@apollo/react-hooks",
+            "npm:react-router-dom",
+            "npm:formik",
+            "npm:antd"
+          ]
+        },
+        {
+          "file": "src/client/components/RegisterForm/RegisterForm.less",
+          "hash": "16520637963467449926"
+        },
+        {
+          "file": "src/client/config/configureStore.js",
+          "hash": "6784625815589759994",
+          "deps": [
+            "npm:history",
+            "npm:redux",
+            "npm:connected-react-router",
+            "npm:redux-thunk"
+          ]
+        },
+        {
+          "file": "src/client/config/createApolloClient.js",
+          "hash": "3535375801859218681",
+          "deps": [
+            "npm:@apollo/client"
+          ]
+        },
+        {
+          "file": "src/client/graphql/graphql.js",
+          "hash": "1659083281480026167"
+        },
+        {
+          "file": "src/client/graphql/mutations/mutations.js",
+          "hash": "3077216057406439224",
+          "deps": [
+            "npm:graphql-tag"
+          ]
+        },
+        {
+          "file": "src/client/index.js",
+          "hash": "8042463983273927551",
+          "deps": [
+            "npm:react",
+            "npm:react-dom",
+            "npm:react-redux",
+            "npm:react-router-dom",
+            "npm:@apollo/client"
+          ]
+        },
+        {
+          "file": "src/client/package.json",
+          "hash": "7047208924348591223"
+        },
+        {
+          "file": "src/client/pages/Dashboard/Dashboard.js",
+          "hash": "13364880869229402736",
+          "deps": [
+            "npm:react",
+            "npm:antd"
+          ]
+        },
+        {
+          "file": "src/client/pages/Dashboard/Dashboard.less",
+          "hash": "3080997977505494962"
+        },
+        {
+          "file": "src/client/pages/Login/Login.js",
+          "hash": "217393195512248680",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "src/client/pages/Login/Login.less",
+          "hash": "3080997977505494962"
+        },
+        {
+          "file": "src/client/pages/NotFound/NotFound.js",
+          "hash": "4813236689762754093",
+          "deps": [
+            "npm:react",
+            "npm:prop-types",
+            "npm:antd",
+            "npm:react-redux"
+          ]
+        },
+        {
+          "file": "src/client/pages/NotFound/NotFound.less",
+          "hash": "3080997977505494962"
+        },
+        {
+          "file": "src/client/pages/Register/Register.js",
+          "hash": "17025756814681122656",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "src/client/pages/Register/Register.less",
+          "hash": "3080997977505494962"
+        },
+        {
+          "file": "src/client/public/favicon.png",
+          "hash": "12685027427495002441"
+        },
+        {
+          "file": "src/client/public/icons/close.svg",
+          "hash": "7977537927214155788"
+        },
+        {
+          "file": "src/client/public/icons/toastr-error.svg",
+          "hash": "6747351131744954373"
+        },
+        {
+          "file": "src/client/public/icons/toastr-separator.svg",
+          "hash": "16072222520127466366"
+        },
+        {
+          "file": "src/client/public/icons/toastr-success.svg",
+          "hash": "12700942015797940312"
+        },
+        {
+          "file": "src/client/public/images/logo.png",
+          "hash": "3531918268655621883"
+        },
+        {
+          "file": "src/client/public/images/menu.svg",
+          "hash": "11564761791289411702"
+        },
+        {
+          "file": "src/client/public/index.html",
+          "hash": "3143035024998128185"
+        },
+        {
+          "file": "src/client/public/manifest.json",
+          "hash": "3152947732504884093"
+        },
+        {
+          "file": "src/client/store/actions/actions.js",
+          "hash": "17788684165522391340"
+        },
+        {
+          "file": "src/client/store/actions/auth/auth.js",
+          "hash": "11493217338628216941"
+        },
+        {
+          "file": "src/client/store/actions/auth/removeAuthUser.js",
+          "hash": "373550118942203040"
+        },
+        {
+          "file": "src/client/store/actions/auth/setAuthUser.js",
+          "hash": "15566117311327700971"
+        },
+        {
+          "file": "src/client/store/actions/auth/setFirstAuthState.js",
+          "hash": "17930723596665446669"
+        },
+        {
+          "file": "src/client/store/reducers/auth.js",
+          "hash": "14957042252846839258"
+        },
+        {
+          "file": "src/client/store/reducers/reducers.js",
+          "hash": "13744702681415600260",
+          "deps": [
+            "npm:redux",
+            "npm:connected-react-router"
+          ]
+        },
+        {
+          "file": "src/client/tsconfig.json",
+          "hash": "6581441036487659383"
+        },
+        {
+          "file": "src/client/validators/user.js",
+          "hash": "15249923086856142710",
+          "deps": [
+            "npm:yup"
+          ]
+        },
+        {
+          "file": "src/client/validators/validators.js",
+          "hash": "6461546786086558575"
+        },
+        {
+          "file": "src/client/webpack.config.js",
+          "hash": "17744540605127580579",
+          "deps": [
+            "npm:webpack",
+            "npm:path",
+            "npm:html-webpack-plugin",
+            [
+              "npm:path-browserify",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "src/client/types/test.tsx",
+          "hash": "9969152926662178333",
+          "deps": [
+            "npm:react"
+          ]
+        }
+      ]
+    }
+  }
+}
