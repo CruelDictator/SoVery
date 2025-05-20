@@ -4,6 +4,7 @@
   ],
   "version": "independent",
   "npmClient": "npm",
+  //"useWorkspaces": true,
   "nx": {
     "useNx": true,
     "cacheableOperations": [
@@ -31,7 +32,9 @@
         "**/bower_components"
       ],
       "ci": false,
-      "forceLocal": true
+      "forceLocal": true,
+      "hoist": true,
+      "strict": true
     },
     "publish": {
       "conventionalCommits": true,
@@ -46,7 +49,10 @@
       "createRelease": "github",
       "gitRemote": "origin",
       "verifyAccess": true,
-      "verifyRegistry": true
+      "verifyRegistry": true,
+      "preDistTag": "next",
+      "noPrivate": true,
+      "noWorkspaceRoot": true
     },
     "version": {
       "conventionalCommits": true,
@@ -60,7 +66,10 @@
       "createRelease": "github",
       "gitRemote": "origin",
       "push": true,
-      "forceGitTag": true
+      "forceGitTag": true,
+      "preDistTag": "next",
+      "noPrivate": true,
+      "noWorkspaceRoot": true
     },
     "run": {
       "stream": true,
@@ -72,7 +81,19 @@
         "--no-package-lock"
       ],
       "sort": true,
-      "profile": true
+      "profile": true,
+      "maxWorkers": 3,
+      "noPrefix": false,
+      "noBail": false,
+      "noSort": false,
+      "noParallel": false,
+      "noStream": false,
+      "noProfile": false,
+      "noNx": false,
+      "noNpmClient": false,
+      "noNpmClientArgs": false,
+      "noSort": false,
+      "noMaxWorkers": false
     }
   },
   "ignoreChanges": [
@@ -96,6 +117,23 @@
     "**/build/**",
     "**/.cache/**",
     "**/.next/**",
-    "**/*.d.ts"
-  ]
+    "**/*.d.ts",
+    "**/.nx/**",
+    "**/nx.json",
+    "**/.turbo/**",
+    "**/turbo.json"
+  ],
+  "workspaces": {
+    "packages": [
+      "src/*"
+    ],
+    "nohoist": [
+      "**/react-native",
+      "**/react-native/**"
+    ]
+  },
+  "logLevel": "info",
+  "progress": true,
+  "rejectCycles": true,
+  "strict": true
 }

@@ -121,7 +121,7 @@
 ### Prerequisites
 
 - [MongoDB](https://www.mongodb.com/download-center/community) or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
-- [Node.js 18.0+](http://nodejs.org) (LTS version recommended)
+- [Node.js 18.20.8+](http://nodejs.org) (LTS version required)
 - Code Editor — [Visual Studio Code](https://code.visualstudio.com/) (preferred) + [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) plug-ins.
 - Command Line Tools
 

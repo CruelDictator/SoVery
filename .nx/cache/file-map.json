@@ -19,7 +19,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-standard": "^5.0.0",
     "husky": "^9.1.7",
-    "lerna": "7.0.0",
+    "lerna": "8.2.2",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5"
   },
@@ -109,7 +109,7 @@
       },
       {
         "file": "LernaDependencyUpdatePlan.md",
-        "hash": "13214937190257673718"
+        "hash": "11684811806611481697"
       },
       {
         "file": "README.md",
@@ -117,7 +117,7 @@
       },
       {
         "file": "lerna.json",
-        "hash": "6219717132988308643"
+        "hash": "15002777650148332229"
       },
       {
         "file": "node_modules.backup.tar.gz",
@@ -133,7 +133,7 @@
       },
       {
         "file": "package.json",
-        "hash": "10594939316379014387"
+        "hash": "368312000549548432"
       },
       {
         "file": "tsconfig.json",
@@ -149,11 +149,39 @@
       },
       {
         "file": ".nx/cache/project-graph.json",
-        "hash": "17804166095687932744"
+        "hash": "2709828633578459099"
       },
       {
         "file": ".nx/cache/file-map.json",
-        "hash": "16870743324244575369"
+        "hash": "15289207149647120151"
+      },
+      {
+        "file": "RULES.md",
+        "hash": "17306144919291512676"
+      },
+      {
+        "file": "TESTING.md",
+        "hash": "15987861864389427197"
+      },
+      {
+        "file": "PHASE1.md",
+        "hash": "16661798598363677634"
+      },
+      {
+        "file": "PHASE2.md",
+        "hash": "314026515942081006"
+      },
+      {
+        "file": "PHASE2-REDUX.md",
+        "hash": "4696426300208745553"
+      },
+      {
+        "file": "PHASE2-ROUTER.md",
+        "hash": "3085701880495689846"
+      },
+      {
+        "file": "PHASE2-STYLING.md",
+        "hash": "18416895685472334406"
       }
     ],
     "projectFileMap": {

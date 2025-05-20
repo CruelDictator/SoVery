@@ -2,7 +2,8 @@
     "extends": "@nrwl/workspace/presets/npm.json",
     "npmScope": "react-node-boilerplate",
     "affected": {
-        "defaultBase": "main"
+        "defaultBase": "main",
+        "base": "main"
     },
     "tasksRunnerOptions": {
         "default": {
@@ -12,11 +13,16 @@
                     "build",
                     "test",
                     "lint",
-                    "dev"
+                    "dev",
+                    "type-check",
+                    "start",
+                    "seed"
                 ],
                 "accessToken": "YOUR_NX_CLOUD_TOKEN",
                 "canTrackAnalytics": false,
-                "showUsageWarnings": true
+                "showUsageWarnings": true,
+                "parallel": 3,
+                "cacheDirectory": ".nx-cache"
             }
         }
     },
@@ -28,24 +34,39 @@
             "inputs": [
                 "production",
                 "^production"
-            ]
+            ],
+            "cache": true
         },
         "test": {
             "inputs": [
                 "default",
                 "^production",
                 "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "outputs": [
+                "{workspaceRoot}/coverage/{projectRoot}"
             ]
         },
         "lint": {
             "inputs": [
                 "default",
                 "{workspaceRoot}/.eslintrc.json"
-            ]
+            ],
+            "cache": true
         },
         "dev": {
             "dependsOn": [
                 "^build"
+            ],
+            "cache": false
+        },
+        "type-check": {
+            "cache": true,
+            "inputs": [
+                "default",
+                "^production",
+                "{workspaceRoot}/tsconfig.json"
             ]
         }
     },
@@ -59,8 +80,17 @@
             "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
             "!{projectRoot}/tsconfig.spec.json",
             "!{projectRoot}/.eslintrc.json",
-            "!{projectRoot}/jest.config.[jt]s"
+            "!{projectRoot}/jest.config.[jt]s",
+            "!{projectRoot}/**/*.test.ts",
+            "!{projectRoot}/**/*.spec.ts",
+            "!{projectRoot}/**/__tests__/**",
+            "!{projectRoot}/**/__mocks__/**"
         ],
-        "sharedGlobals": []
+        "sharedGlobals": [
+            "{workspaceRoot}/package.json",
+            "{workspaceRoot}/tsconfig.json",
+            "{workspaceRoot}/.eslintrc.json",
+            "{workspaceRoot}/jest.preset.js"
+        ]
     }
 }

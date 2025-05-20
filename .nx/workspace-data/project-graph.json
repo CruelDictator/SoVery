@@ -1,0 +1,185 @@
+{
+  "nodes": {
+    "@react-node-boilerplate/client": {
+      "name": "@react-node-boilerplate/client",
+      "type": "lib",
+      "data": {
+        "root": "src/client",
+        "sourceRoot": "src/client",
+        "name": "@react-node-boilerplate/client",
+        "tags": [
+          "npm:public"
+        ],
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "build",
+              "dev",
+              "type-check"
+            ]
+          },
+          "description": ""
+        },
+        "targets": {
+          "build": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "build"
+            },
+            "metadata": {
+              "scriptContent": "webpack --mode production --progress",
+              "runCommand": "npm run build"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "inputs": [
+              "production",
+              "^production"
+            ],
+            "cache": true
+          },
+          "dev": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "dev"
+            },
+            "metadata": {
+              "scriptContent": "webpack-dev-server --mode development",
+              "runCommand": "npm run dev"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "cache": false
+          },
+          "type-check": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "type-check"
+            },
+            "metadata": {
+              "scriptContent": "tsc --noEmit",
+              "runCommand": "npm run type-check"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/tsconfig.json"
+            ]
+          },
+          "nx-release-publish": {
+            "executor": "@nx/js:release-publish",
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "options": {},
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "implicitDependencies": []
+      }
+    },
+    "@react-node-boilerplate/server": {
+      "name": "@react-node-boilerplate/server",
+      "type": "lib",
+      "data": {
+        "root": "src/server",
+        "sourceRoot": "src/server",
+        "name": "@react-node-boilerplate/server",
+        "tags": [
+          "npm:public"
+        ],
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "check-staged",
+              "start",
+              "dev",
+              "seed"
+            ]
+          },
+          "description": ""
+        },
+        "targets": {
+          "check-staged": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "check-staged"
+            },
+            "metadata": {
+              "scriptContent": "lint-staged",
+              "runCommand": "npm run check-staged"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "start": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "start"
+            },
+            "metadata": {
+              "scriptContent": "node index.js",
+              "runCommand": "npm run start"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "dev": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "dev"
+            },
+            "metadata": {
+              "scriptContent": "nodemon -r dotenv/config index.js dotenv_config_path=../../.env",
+              "runCommand": "npm run dev"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "dependsOn": [
+              "^build"
+            ],
+            "cache": false
+          },
+          "seed": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "seed"
+            },
+            "metadata": {
+              "scriptContent": "node seed.js",
+              "runCommand": "npm run seed"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "nx-release-publish": {
+            "executor": "@nx/js:release-publish",
+            "dependsOn": [
+              "^nx-release-publish"
+            ],
+            "options": {},
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "implicitDependencies": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "@react-node-boilerplate/client": [],
+    "@react-node-boilerplate/server": []
+  },
+  "version": "6.0"
+}
