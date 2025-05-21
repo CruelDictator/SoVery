@@ -15,7 +15,8 @@
             "NPM Scripts": [
               "build",
               "dev",
-              "type-check"
+              "type-check",
+              "test"
             ]
           },
           "description": ""
@@ -75,6 +76,27 @@
               "{workspaceRoot}/tsconfig.json"
             ]
           },
+          "test": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "test"
+            },
+            "metadata": {
+              "scriptContent": "jest",
+              "runCommand": "npm run test"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ]
+          },
           "nx-release-publish": {
             "executor": "@nx/js:release-publish",
             "dependsOn": [
@@ -104,7 +126,8 @@
               "check-staged",
               "start",
               "dev",
-              "seed"
+              "seed",
+              "test"
             ]
           },
           "description": ""
@@ -161,6 +184,27 @@
             },
             "configurations": {},
             "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "test"
+            },
+            "metadata": {
+              "scriptContent": "jest",
+              "runCommand": "npm run test"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "cache": true,
+            "outputs": [
+              "{workspaceRoot}/coverage/{projectRoot}"
+            ]
           },
           "nx-release-publish": {
             "executor": "@nx/js:release-publish",

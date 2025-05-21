@@ -71,13 +71,15 @@ module.exports = {
       "crypto": false
     },
     alias: {
-      'graphql$': 'graphql/index.js'
+      'graphql$': 'graphql/index.js',
+      'react': 'react/index.js'
     }
   },
   devServer: {
     port: 3000,
     open: true,
     historyApiFallback: true,
+    hot: true,
     proxy: {
       '/api': 'http://localhost:8080'
     },
